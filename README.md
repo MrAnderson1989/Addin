@@ -12,4 +12,8 @@ Addin 是一个基于 dotnet appdomain 插件框架的实现。
 
 因为dotnet是基于CLR的，CLR是一个混合编程的平台，只要一门语言有面向CLR的编译器，这门语言就可以编译成中间语言。故：Addin 理论上可以承载其他语言编译生成的插件。（本人未实际测试）
 
+# 原理
+
+参照 dotnet core mvc 实现了一个简单的 mvc 框架，mvc的路由与dll操作层挂接。
+
 
