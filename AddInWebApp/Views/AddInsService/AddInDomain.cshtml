@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="/Content/Site.css" rel="stylesheet" /> -->
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/AddIns/AddIn.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">AddIns</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content theme-showcase" style="margin-top: 100px;">
+        <div class="page-header">
+            <h1> @Model.AppDomainName  <small>@Model.Description</small></h1>
+
+            @*<p class="light">
+                    @Model.Description
+                </p>*@
+
+        </div>
+        <section class="content-wrapper main-content clear-fix">
+
+            <h3>
+                Status：
+                @if (Model.Status == "1")
+                {
+                    <span class="label label-success">已加载</span>
+                }
+                else
+                {
+                    <span class="label label-danger">已卸载</span>
+                }
+            </h3>
+
+        </section>
+        <hr>
+
+        @foreach (var c in Model.Controllers)
+        {
+            <section class="content-wrapper main-content clear-fix">
+                <h2>@c.ControllerName</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var a in c.Actions)
+                        {
+                            <tr>
+                                <td class="api-name"><a href="/@Model.AppDomainName/@c.ControllerName/@a.ActionName">@a.HttpMethod @c.ControllerName/@a.ActionName</a></td>
+                                <td class="api-documentation">
+                                    <p>@a.Description</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+            <hr>
+        }
+        <hr>
+        <section>
+            <button type="submit" class="btn btn-primary" id="reload" onclick="Load(@Model.ID)">Load</button>
+            <button type="submit" class="btn btn-warning" id="unload" onclick="Unload(@Model.ID)">Unload</button>
+            @*<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal">Append</button>*@
+        </section>
+        <hr>
+
+        @*<footer>
+                <p>© 2017 - 我的 ASP.NET 应用程序</p>
+                <input id="file" onchange="fileSelected(this)" type="file" multiple />
+            </footer>*@
+    </div>
+    <!-- Modal -->
+    <div class="modal fade " id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">插件名称:</label>
+                            <input type="text" class="form-control" id="addin-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">插件描述:</label>
+                            <textarea class="form-control" id="description-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="AddAddInDomain($('#addin-name').val(), $('#description-text').val())">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

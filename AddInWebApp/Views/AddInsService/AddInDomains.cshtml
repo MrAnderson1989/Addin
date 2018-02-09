@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/AddIns/AddIn.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">AddIns</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron" style="margin-top:53px;">
+        <div class="container">
+            <h1>AddIn Domain List Page</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+        </div>
+    </div>
+
+    <div class="container body-content" style="margin-top: 100px;">
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+
+            @foreach (var d in Model.Models)
+            {
+                <div class="col-md-4">
+                    <h2>@d.AddInDomain</h2>
+                    <p>@d.Description </p>
+                    <p><a class="btn btn-default" href="\Addinsdomain\AddInsService\addinDomain?id=@d.ID" role="button">View details »</a></p>
+                </div>
+            }
+            </div>
+
+            <hr>
+            <button type="submit" class="btn btn-primary" id="reload" onclick="ReloadAll()">Reload</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal">Append</button>
+            <hr>
+            <footer>
+                <p>© 2016 Company, Inc.</p>
+            </footer>
+        </div>
+
+
+        @*<div id="body" class="help-page">
+            <section class="featured">
+                <div class="content-wrapper">
+                    <h2>Introduction</h2>
+                    <p>
+                        Provide a general description of your APIs here.
+                    </p>
+                </div>
+            </section>
+
+
+            @foreach (var m in Model.Models)
+            {
+            <section class="content-wrapper main-content clear-fix">
+                <h2>@m.AddInDomain</h2> 
+                @foreach (var c in @m.Controllers)
+                    {
+                    <table class="help-page-table">
+                        <thead>
+                            <tr>
+                                <th>API</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var a in @c.Actions)
+                                {
+                                <tr>
+                                    <td class="api-name"><a href="/@m.AddInDomain/@c.ControllerName/@a.ActionName">@a.HttpMethod @c.ControllerName/@a.ActionName</a></td>
+                                    <td class="api-documentation">
+                                        <p>@a.Description</p>
+                                    </td>
+                                </tr>
+                                }
+                        </tbody>
+                    </table>
+                    }
+                <button type="submit" class="btn btn-primary" id="reload" onclick="Reload()">Reload</button>
+                <button type="submit" class="btn btn-warning" id="unload" onclick="Unload(&#34;@m.AddInDomain&#34;)">Unload</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal">Add</button>
+            </section>
+            }
+        </div>*@
+        @*<hr>
+        <footer>
+            <p>© 2017 - 我的 ASP.NET 应用程序</p>
+            <input id="file" onchange="fileSelected(this)" type="file" multiple />
+        </footer>*@
+    </div>
+    <!-- Modal -->
+    <div class="modal fade " id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">插件名称:</label>
+                            <input type="text" class="form-control" id="addin-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">插件描述:</label>
+                            <textarea class="form-control" id="description-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Append($('#addin-name').val(), $('#description-text').val())">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

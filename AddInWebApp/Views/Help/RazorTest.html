@@ -1,0 +1,118 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">AddIns</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li><a href="/">主页</a></li>-->
+                    <li><a href="/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <link type="text/css" href="/Content/HelpPage.css" rel="stylesheet">
+        <header class="help-page">
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <h1>ASP.NET Web API Help Page</h1>
+                </div>
+            </div>
+        </header>
+        <div id="body" class="help-page">
+            <section class="featured">
+                <div class="content-wrapper">
+                    <h2>Introduction</h2>
+                    <p>
+                        Provide a general description of your APIs here.
+                    </p>
+                </div>
+            </section>
+            <section class="content-wrapper main-content clear-fix">
+                <h2 id="Test">Test</h2>
+                <table class="help-page-table">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/GET-api-Test">GET api/Test</a></td>
+                            <td class="api-documentation">
+                                <p>No documentation available.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 id="Values">Values</h2>
+                <p>Test Controler</p>
+                <table class="help-page-table">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/GET-api-Values">GET api/Values</a></td>
+                            <td class="api-documentation">
+                                <p>获取全部数据</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/GET-api-Values-id">GET api/Values/{id}</a></td>
+                            <td class="api-documentation">
+                                <p>获取指定数据</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/POST-api-Values">POST api/Values</a></td>
+                            <td class="api-documentation">
+                                <p>添加操作</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/PUT-api-Values-id">PUT api/Values/{id}</a></td>
+                            <td class="api-documentation">
+                                <p>添加、修改操作</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="api-name"><a href="/Help/Api/DELETE-api-Values-id">DELETE api/Values/{id}</a></td>
+                            <td class="api-documentation">
+                                <p>删除操作</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <hr>
+        <footer>
+            <p>© 2017 - 我的 ASP.NET 应用程序</p>
+            姓名： @Model.Name
+        </footer>
+    </div>
+</body>
+</html>

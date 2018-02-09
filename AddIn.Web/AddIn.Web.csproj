@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A46A02F9-9F49-4A25-AA99-14694273E8B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AddIn.Web</RootNamespace>
+    <AssemblyName>AddIn.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControllerFactory\IAddInControllerFactory.cs" />
+    <Compile Include="ControllerFactory\AddInControllerFactory.cs" />
+    <Compile Include="Controller\AddInController.cs" />
+    <Compile Include="Controller\AddInControllerBase.cs" />
+    <Compile Include="Controller\IAddInController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Razor\ActionResult.cs" />
+    <Compile Include="Razor\ContentResult.cs" />
+    <Compile Include="Razor\JsonResult.cs" />
+    <Compile Include="Razor\MyViewResult.cs" />
+    <Compile Include="Razor\RazorEngineViewResult.cs" />
+    <Compile Include="Razor\VelocityViewResult.cs" />
+    <Compile Include="Routing\AddInHandler.cs" />
+    <Compile Include="Routing\AddInRouteHandler.cs" />
+    <Compile Include="Routing\HttpDeleteAttribute.cs" />
+    <Compile Include="Routing\HttpGetAttribute.cs" />
+    <Compile Include="Routing\HttpMethodAttribute.cs" />
+    <Compile Include="Routing\HttpPatchAttribute.cs" />
+    <Compile Include="Routing\HttpPostAttribute.cs" />
+    <Compile Include="Routing\HttpPutAttribute.cs" />
+    <Compile Include="Routing\IActionHttpMethodProvider.cs" />
+    <Compile Include="Routing\IRouteHandler.cs" />
+    <Compile Include="Routing\IRouteTemplateProvider.cs" />
+    <Compile Include="Routing\Route.cs" />
+    <Compile Include="Routing\RouteCollection.cs" />
+    <Compile Include="Routing\RouteData.cs" />
+    <Compile Include="Routing\RouteTable.cs" />
+    <Compile Include="Routing\UrlRoutingModule.cs" />
+    <Compile Include="ViewEngine\VelocityHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AddIn\AddIn.csproj">
+      <Project>{db3193fe-c38d-47f4-94ab-f895368e20b3}</Project>
+      <Name>AddIn</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
